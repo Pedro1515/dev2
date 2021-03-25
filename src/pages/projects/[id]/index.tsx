@@ -412,7 +412,6 @@ function Project() {
             </ol>
           </nav>
         </div>
-        {runs && <a href={`${asPath && asPath}/compare`} target="blank" className="py-0.5 px-3 text-white tracking-tight font-medium rounded bg-blue-500 transition duration-300 hover:bg-blue-600">Compare</a>}
       </LayoutHeader>
       <LayoutContent scrollable>
         <div className="flex border-b">

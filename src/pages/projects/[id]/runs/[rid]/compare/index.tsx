@@ -90,6 +90,8 @@ function StepsCard({ steps = [] }) {
 }
 
 function TestCard({name, steps, description, tags, formattedDuration}) {
+  console.log(steps);
+  console.log(tags);
   return (
     <>
       {name && (
@@ -202,7 +204,7 @@ function ScenarioItem({id, name, steps, status, description, duration, tags}) {
 
   return (
     <>
-    <input type="checkbox" id={`toogle1${count1}`} className="hidden" onClick={handleCheckbox1}/>
+      <input type="checkbox" id={`toogle1${count1}`} className="hidden" onClick={handleCheckbox1}/>
       <input type="checkbox" id={`toogle2${count2}`} className="hidden" onClick={handleCheckbox2}/>
       <div className="px-2 pt-1">
           <div className={`bg-blue-500 text-white rounded bg-white p-2`}>

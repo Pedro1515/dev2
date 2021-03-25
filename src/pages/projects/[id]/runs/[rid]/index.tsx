@@ -334,12 +334,18 @@ function Logs({logs}) {
 }
 
 function TestCard({ id, name, steps = [], errors, featureName, featureId }) {
+  const { asPath } = useRouter();
   return (
     <div className="mt-4 border border-gray-300 rounded-md p-4">
       <div className="mb-3">
-        <div className="flex justify-between items-center">
-          <div className="text-sm font-medium">{name}</div>
-          {errors && <ErrorStateMenuIcon {...{ id, errors, featureId }} />}
+        <div className="">
+          <span className="text-sm font-medium">{name}</span>
+          <div className="flex float-right">
+            <div className="self-center">
+              <a className="mx-3 px-3 py-1 rounded bg-blue-600 font-medium text-sm text-white tracking-tight transition duration-200 hover:bg-blue-700" href={`${asPath && asPath}/compare/${name}`} target="blank" >Compare</a>
+            </div>
+            <span>{errors && <ErrorStateMenuIcon {...{ id, errors, featureId }} />}</span>
+          </div>
         </div>
         {featureName && <p className="px-2 inline-block rounded bg-gray-600 text-sm font-medium text-white">Feature: {featureName}</p>}
         {errors?.length > 0 && (

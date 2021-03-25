@@ -24,6 +24,7 @@ import {
 import { customFormatDuration } from "src/utils";
 import { Feature, Run as ApiRun, Test, updateTest } from "src/api";
 import { useRouter } from "next/router";
+import { Transition } from "@headlessui/react";
 
 interface FeatureItemProps {
   name: string;
@@ -301,10 +302,11 @@ function TestCard({ id, name, errorStates, duration, steps, runName, featureId, 
           </div>
         </div>
         <div>
-          <div className="px-2 py-px inline-flex text-xs leading-5 font-medium rounded border text-gray-900 tracking-wide items-center">
-            <div className="h-3"></div>
-            id: {id}
-          </div>
+          {/* <div className=" inline-flex leading-5 rounded text-gray-900 tracking-wide items-center"> */}
+            <span className="h-3"></span>
+            run: {runName}
+            {/* tiene que ser del mismo size que el siguiente ose que el detalle de el clock*/}
+          {/* </div> */}
           <div className="inline-flex leading-5 rounded tracking-wide items-center m-2">
             <div className="flex items-center">
               <div className="w-4 h-4 text-gray-500 mr-2">
@@ -340,7 +342,17 @@ function TestCard({ id, name, errorStates, duration, steps, runName, featureId, 
             <div dangerouslySetInnerHTML={{ __html: description }} />
           </div>
         )}
-        {checked && <StepsCard steps={steps} bddType={bddType}/>}
+          <Transition
+            show={checked}
+            enter="transition ease-out duration-200 transform"
+            enterFrom="opacity-0 scale-95"
+            enterTo="opacity-100 scale-100"
+            leave="transition ease-in duration-75 transform"
+            leaveFrom="opacity-100 scale-100"
+            leaveTo="opacity-0 scale-95"
+          >
+            <StepsCard steps={steps} bddType={bddType}/>
+          </Transition>
       </div>
     </>
   );
